@@ -1,51 +1,86 @@
 ---
-interface Props {
-	title: string;
-}
+import "../assets/main.css";
+
+// Components
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body class="content-grid">
+        <Header />
+        <div class="full-width content-grid py-20 lg:py-24">
+            <slot />
+        </div>
+        <Footer />
+    </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+    .content-grid {
+        --inline-padding: 1rem;
+
+        display: grid;
+        grid-template-columns:
+            [full-width-start] var(--inline-padding)
+            [content-start] 1fr [content-end]
+            var(--inline-padding) [full-width-end];
+    }
+
+    .content-grid > :not(.full-width, .breakout) {
+        grid-column: content;
+    }
+
+    .content-grid > .breakout {
+        grid-column: full-width;
+    }
+
+    .content-grid > .full-width {
+        grid-column: full-width;
+    }
+
+    @media screen and (min-width: 49rem) {
+        .content-grid {
+            --inline-padding: 2rem;
+        }
+    }
+
+    @media screen and (min-width: 64rem) {
+        .content-grid {
+            --inline-padding: 1rem;
+            --outline-padding: 6rem;
+            --column-width: 4rem;
+
+            grid-template-columns:
+                [full-width-start] 1fr
+                [breakout-start] var(--inline-padding)
+                [content-start] repeat(12, minmax(0, var(--column-width)))
+                [content-end]
+                var(--inline-padding) [breakout-end] 1fr [full-width-end];
+
+            column-gap: 2rem;
+        }
+        .content-grid > .breakout {
+            grid-column: breakout;
+        }
+    }
+
+    body {
+        background-image: linear-gradient(
+            to right,
+            #f4f4f5 0px calc(50% - 608px),
+            #fafafa calc(50% - 608px) calc(50% + 608px),
+            #f4f4f5 calc(50% + 608px) 100%
+        );
+    }
 </style>
