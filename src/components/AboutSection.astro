@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+import localAboutImage from "../assets/images/about-me.jpeg";
+---
+
+<section
+    class="mt-12 flex items-center justify-between gap-8 rounded-3xl border border-neutral-200 p-6"
+    id="aboutMeSection"
+>
+    <div class="space-y-6">
+        <h2 class="text-4xl font-bold text-neutral-800 md:text-5xl">
+            I help people like you become the <span class="text-primary-500"
+                >Ultimate You.</span
+            >
+        </h2>
+        <p class="text-base text-neutral-600">
+            Over the years, I have helped people get in the best shape of their
+            lives. I get it, it can be frustrating when you are putting the
+            effort in and not seeing the results show. That's what I do, I make
+            sure that you are putting the effort in and seeing the results that
+            you deserve. I do this by not only giving you the tools but also
+            making sure you are using them and following the plan we have
+            specifically built for you. My fundamental goal is for you to become
+            the ultimate version of yourself.
+        </p>
+    </div>
+
+    <Image
+        src={localAboutImage}
+        id="aboutMeImage"
+        alt="Portrait of Sam Foulkes, a personal trainer, confidently posing for a camera in a gym setting."
+        class="h-auto max-w-[50%] rounded-xl bg-cover shadow-xl shadow-neutral-950/35"
+    />
+</section>
+
+<script>
+    const aboutMeImage = document.querySelector("#aboutMeImage");
+    const aboutMeSection = document.querySelector("#aboutMeSection");
+    const isSmallScreen = () => {
+        return window.innerWidth < 1024;
+    };
+
+    const updateOnResize = () => {
+        if (isSmallScreen()) {
+            aboutMeImage.remove();
+        } else {
+            aboutMeSection.appendChild(aboutMeImage);
+        }
+    };
+
+    window.addEventListener("resize", updateOnResize);
+
+    // Call the function initially to check the screen size on page load
+    updateOnResize();
+</script>

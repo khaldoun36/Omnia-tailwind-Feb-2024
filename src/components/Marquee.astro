@@ -1,0 +1,114 @@
+---
+const {
+    direction = "right",
+    speed = "fast",
+    isFullWidth = false,
+    classList,
+} = Astro.props;
+---
+
+<div
+    class:list={["scroller", { "full-width": isFullWidth }, classList]}
+    data-direction={direction}
+    data-speed={speed}
+>
+    <div class="scroller__inner">
+        <slot />
+    </div>
+</div>
+
+<!-- ******************** -->
+<!-- *****JavaScript***** -->
+<!-- ******************** -->
+<script>
+    const scrollers = document.querySelectorAll<HTMLElement>(".scroller");
+
+    // If a user hasn't opted in for reduced motion, then we add the animation
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        addAnimation();
+    }
+
+    function addAnimation() {
+        scrollers.forEach((scroller) => {
+            // add data-animated="true" to every `.scroller` on the page
+            scroller.setAttribute("data-animated", "true");
+
+            // Make an array from the elements within `.scroller-inner`
+            const scrollerInner =
+                scroller.querySelector<HTMLElement>(".scroller__inner");
+            const scrollerContent = Array.from(scrollerInner.children);
+
+            // For each item in the array, clone it
+            // add aria-hidden to it
+            // add it into the `.scroller-inner`
+            scrollerContent.forEach((item) => {
+                const duplicatedItem = item.cloneNode(true) as HTMLElement;
+                duplicatedItem.setAttribute("aria-hidden", "true");
+                scrollerInner.appendChild(duplicatedItem);
+            });
+        });
+    }
+</script>
+
+<!-- ******************** -->
+<!-- ********Style******* -->
+<!-- ******************** -->
+<style>
+    .scroller {
+        max-width: 100%;
+    }
+
+    .scroller__inner {
+        padding-block: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .scroller[data-animated="true"] {
+        overflow: hidden;
+        -webkit-mask: linear-gradient(
+            90deg,
+            transparent,
+            #f4f4f5 10%,
+            #f4f4f5 90%,
+            transparent
+        );
+        mask: linear-gradient(
+            90deg,
+            transparent,
+            #f4f4f5 20%,
+            #f4f4f5 80%,
+            transparent
+        );
+    }
+
+    .scroller[data-animated="true"] .scroller__inner {
+        width: max-content;
+        flex-wrap: nowrap;
+        animation: scroll var(--_animation-duration, 40s)
+            var(--_animation-direction, forwards) linear infinite;
+    }
+
+    .scroller[data-direction="right"] {
+        --_animation-direction: reverse;
+    }
+
+    .scroller[data-direction="left"] {
+        --_animation-direction: forwards;
+    }
+
+    .scroller[data-speed="fast"] {
+        --_animation-duration: 20s;
+    }
+
+    .scroller[data-speed="slow"] {
+        --_animation-duration: 100s;
+    }
+
+    @keyframes scroll {
+        to {
+            transform: translate(calc(-50% - 0.5rem));
+        }
+    }
+</style>

@@ -1,0 +1,50 @@
+---
+import { cva } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
+
+const button = cva(
+    [
+        "flex",
+        "h-10",
+        "max-w-fit",
+        "items-center",
+        "justify-center",
+        "rounded-full",
+        "px-5",
+        "text-sm",
+        "font-semibold",
+        "transition-colors",
+        "focus:outline-none",
+    ],
+    {
+        variants: {
+            intent: {
+                primary: [
+                    "bg-primary-500",
+                    "text-neutral-50",
+                    "hover:bg-primary-600",
+                    "focus:bg-primary-600",
+                ],
+                secondary: [
+                    "border",
+                    "border-primary-300",
+                    "text-neutral-800",
+                    "hover:border-primary-500",
+                    "focus:border-primary-500",
+                ],
+            },
+        },
+    }
+);
+
+const { intent = "primary", classList, ...rest } = Astro.props;
+---
+
+<a
+    class:list={twMerge([button({ intent }), `${classList}`])}
+    target="_blank"
+    rel="noopener"
+    {...rest}
+>
+    <slot />
+</a>

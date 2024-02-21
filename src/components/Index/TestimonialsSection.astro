@@ -1,0 +1,61 @@
+---
+import Marquee from "../Marquee.astro";
+
+import testimonials from "../../js/testimonials";
+---
+
+<section class="full-width mt-16">
+    <h2
+        class="mx-auto max-w-[15ch] text-center text-3xl font-bold text-neutral-800 md:text-4xl"
+    >
+        See what the people are saying
+    </h2>
+    <div class="content-grid mt-12">
+        <Marquee speed="slow">
+            {
+                testimonials.map((testimonial) => (
+                    <div class="relative max-w-[45ch] space-y-4 overflow-clip rounded-2xl border border-neutral-200 p-6">
+                        <h4 class="text-base font-bold text-neutral-800">
+                            {testimonial.title}
+                        </h4>
+                        <p class="text-base text-neutral-600">
+                            {testimonial.desc.substring(0, 200)}
+                            {testimonial.desc.length > 200 && (
+                                <button
+                                    id="expand-txt"
+                                    class="text-primary-500 underline underline-offset-2"
+                                >
+                                    Continue reading
+                                </button>
+                            )}
+                        </p>
+                        <div class="absolute left-0 top-0 -z-10 size-4/12 rounded-full bg-primary-300 blur-[150px]" />
+                    </div>
+                ))
+            }
+        </Marquee>
+        <Marquee speed="slow" direction="left">
+            {
+                testimonials.map((testimonial) => (
+                    <div class="relative max-w-[45ch] space-y-4 overflow-clip rounded-2xl border border-neutral-200 p-6">
+                        <h4 class="text-base font-bold text-neutral-800">
+                            {testimonial.title}
+                        </h4>
+                        <p class="text-base text-neutral-600">
+                            {testimonial.desc.substring(0, 200)}
+                            {testimonial.desc.length > 200 && (
+                                <button
+                                    id="expand-txt"
+                                    class="text-primary-500 underline underline-offset-2"
+                                >
+                                    Continue reading
+                                </button>
+                            )}
+                        </p>
+                        <div class="absolute left-0 top-0 -z-10 size-4/12 rounded-full bg-primary-300 blur-[150px]" />
+                    </div>
+                ))
+            }
+        </Marquee>
+    </div>
+</section>

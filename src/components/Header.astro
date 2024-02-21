@@ -1,0 +1,83 @@
+---
+import { Icon } from "astro-icon/components";
+import { twMerge } from "tailwind-merge";
+
+// import components
+import ButtonLink from "../components/ButtonLink.astro";
+
+// Nav links paths
+import navigationLinks from "../js/navigationLinks";
+---
+
+<header
+    class="full-width content-grid sticky left-0 top-0 z-30 border-b border-neutral-200 bg-neutral-50/60 backdrop-blur"
+>
+    <div class="flex items-center justify-between py-4 lg:py-2">
+        <a href="/"><Icon name="logo" style="font-size: 40px" /></a>
+        <nav
+            class="hidden items-center justify-between gap-1 rounded-full border border-neutral-200 p-1 lg:flex"
+        >
+            {
+                navigationLinks.map((data) => (
+                    <a
+                        href={data.slug}
+                        class={twMerge(
+                            "flex h-10 items-center rounded-full px-5 text-sm font-semibold text-neutral-800 transition hover:bg-neutral-100 focus:bg-neutral-100 focus:outline-none"
+                        )}
+                    >
+                        {data.text}
+                    </a>
+                ))
+            }
+        </nav>
+
+        <ButtonLink
+            intent="secondary"
+            href="https://maxibestof.one/typefaces/inter"
+            >helllo world</ButtonLink
+        >
+    </div>
+    <nav
+        class="hidden-scrollbar flex items-center justify-between gap-1 overflow-x-scroll border-t border-neutral-200 py-2 lg:hidden"
+    >
+        {
+            navigationLinks.map((data) => (
+                <a
+                    href={data.slug}
+                    class={twMerge(
+                        "flex h-10 items-center whitespace-nowrap text-nowrap rounded-full px-5 text-sm font-semibold text-neutral-800 transition hover:bg-neutral-100 focus:bg-neutral-100 focus:outline-none"
+                    )}
+                >
+                    {data.text}
+                </a>
+            ))
+        }
+    </nav>
+</header>
+
+<script>
+    const navLinks = document.querySelectorAll("nav a");
+
+    // `slice` here to remove the first `/` in pathname
+    const currentPath = window.location.pathname.slice(1);
+    console.log(currentPath);
+
+    navLinks.forEach((link) => {
+        link.classList.remove("active");
+
+        // Cast link to HTMLAnchorElement
+        const anchorLink = link as HTMLAnchorElement;
+
+        // `anchorLink.href` now has the `href` property
+        const hrefArray = anchorLink.href.split("/");
+        const thisPath = hrefArray[hrefArray.length - 1];
+
+        if (currentPath === thisPath) {
+            link.classList.add(
+                "bg-neutral-100",
+                "border",
+                "border-neutral-200"
+            );
+        }
+    });
+</script>
