@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import BlogPost from "../components/BlogPost.astro";
+---
+
+<Layout title="insights">
+    <main>
+        <h1
+            class="max-w-[30ch] text-4xl font-bold text-neutral-800 md:text-5xl"
+        >
+            Exploring the dynamics of weight loss, optimal training intensity,
+            and cutting-edge dieting tools
+        </h1>
+    </main>
+    <section
+        class="mt-16 flex flex-col items-start justify-start gap-8 md:border-l md:border-neutral-200 md:pl-6"
+    >
+        <BlogPost />
+    </section>
+</Layout>

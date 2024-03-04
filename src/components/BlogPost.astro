@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon/components";
+
+const {
+    date,
+    title = "hello world",
+    desc = "hello world",
+    to = "https://docs.astro.build/en/basics/astro-components/",
+} = Astro.props;
+---
+
+<a href={to}>
+    <article
+        class="flex max-w-fit flex-col items-baseline gap-6 rounded-lg p-6 pl-0 transition-colors hover:bg-neutral-200/75 focus:bg-neutral-200/75 focus:outline-none md:flex-row md:pl-6"
+    >
+        <time
+            datetime={date}
+            class="border-l border-neutral-400 pl-4 text-base font-medium text-neutral-400 md:border-0 md:pl-0"
+            >{date}</time
+        >
+        <div class="flex flex-col items-start">
+            <h2
+                class="max-w-[45ch] text-balance text-xl font-semibold text-neutral-800"
+            >
+                {title[0].text}
+            </h2>
+            <p class="mt-2 max-w-[55ch] text-base text-neutral-400">
+                {desc[0].text}
+            </p>
+            <button class="mt-4 flex items-center gap-1 text-primary-500">
+                <span class="text-base font-semibold">Read more</span>
+                <Icon name="ph:caret-right" class="text-base" />
+            </button>
+        </div>
+    </article>
+</a>
