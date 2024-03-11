@@ -14,7 +14,7 @@ export default defineConfig({
         tailwind(),
         icon(),
         storyblok({
-            accessToken: env.STORYBLOK_TOKEN,
+            accessToken: "TeKuT4VuYc6ykJD8KjUGAQtt",
             components: {
                 blogPost: "stroyblok/BlogPost",
                 blogPostList: "stroyblok/BlogPostList",
