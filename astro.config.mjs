@@ -15,7 +15,6 @@ export default defineConfig({
         icon(),
         storyblok({
             accessToken: env.STORYBLOK_TOKEN,
-            bridge: env.STORYBLOK_IS_PREVIEW === "yes",
             components: {
                 blogPost: "stroyblok/BlogPost",
                 blogPostList: "stroyblok/BlogPostList",
