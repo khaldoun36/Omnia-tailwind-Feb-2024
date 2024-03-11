@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+import Layout from "../layouts/Layout.astro";
+
+import aboutMe from "../js/aboutMe";
+
+import aboutMeImage from "../assets/images/about-me-page.jpg";
+---
+
+<Layout title="about">
+    <div class="grid gap-16 lg:grid-cols-5">
+        <main class="order-2 lg:order-1 lg:col-span-3">
+            <h1 class="text-4xl font-bold text-neutral-800 md:text-5xl">
+                I&#x27;m Sam Foulkes - Online & PT Transformation Coach
+            </h1>
+            <div class="about-me-text mt-8 flex flex-col items-start gap-6">
+                {
+                    aboutMe.map((text) => (
+                        <p class="text-base text-neutral-600">{text}</p>
+                    ))
+                }
+            </div>
+        </main>
+        <aside class="order-1 lg:order-2 lg:col-span-2">
+            <Image
+                src={aboutMeImage}
+                class="aspect-square h-auto max-w-full rotate-2 rounded-md object-cover md:size-64 lg:aspect-square lg:size-max"
+                format="webp"
+                alt="Image of a person walking in a forest somewhere in Japan."
+            />
+            <div class="mt-6 hidden flex-col justify-start gap-6 lg:flex">
+                <a
+                    class="flex items-center justify-start gap-3 text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-700 focus:text-neutral-700 focus:outline-none"
+                    href="https://www.instagram.com/omnia.samfoulkes/?hl=en"
+                    target="_blank"
+                >
+                    <Icon name="ph:instagram-logo" class="text-xl" />
+                    <span>Instagram</span>
+                </a>
+                <a
+                    class="flex items-center justify-start gap-3 text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-700 focus:text-neutral-700 focus:outline-none"
+                    href="mailto:omnia.samfoulkes@gmail.com"
+                    target="_blank"
+                >
+                    <Icon name="ph:envelope-simple" class="text-xl" />
+                    <span>omnia.samfoulkes[at]gmail.com</span>
+                </a>
+            </div>
+        </aside>
+        <div class="order-3 flex flex-col justify-start gap-6 lg:hidden">
+            <a
+                class="flex items-center justify-start gap-3 text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-700 focus:text-neutral-700 focus:outline-none"
+                href="https://www.instagram.com/omnia.samfoulkes/?hl=en"
+                target="_blank"
+            >
+                <Icon name="ph:instagram-logo" class="text-xl" />
+                <span>Instagram</span>
+            </a>
+            <a
+                class="flex items-center justify-start gap-3 text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-700 focus:text-neutral-700 focus:outline-none"
+                href="mailto:omnia.samfoulkes@gmail.com"
+                target="_blank"
+            >
+                <Icon name="ph:envelope-simple" class="text-xl" />
+                <span>omnia.samfoulkes[at]gmail.com</span>
+            </a>
+        </div>
+    </div>
+</Layout>

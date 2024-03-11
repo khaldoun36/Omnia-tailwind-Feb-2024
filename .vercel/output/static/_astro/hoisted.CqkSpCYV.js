@@ -1,0 +1,1 @@
+const e=document.querySelectorAll("nav a"),o=window.location.pathname.slice(1);console.log(o);e.forEach(t=>{t.classList.remove("active");const n=t.href.split("/"),a=n[n.length-1];o===a&&t.classList.add("bg-neutral-100","border","border-neutral-200")});
