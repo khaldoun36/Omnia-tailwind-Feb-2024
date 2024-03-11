@@ -1,9 +1,9 @@
-import './404_Z7YZgW6P.mjs';
-import { A as AstroError, I as InvalidImageService, E as ExpectedImageOptions, g as ExpectedImage, h as FailedToFetchRemoteImageDimensions, c as createAstro, a as createComponent, i as ImageMissingAlt, r as renderTemplate, m as maybeRenderHead, d as addAttribute, s as spreadAttributes, e as renderComponent } from '../astro_lvwGnhBe.mjs';
+import './404_R7RQeRAU.mjs';
+import { A as AstroError, i as InvalidImageService, j as ExpectedImageOptions, E as ExpectedImage, k as FailedToFetchRemoteImageDimensions, c as createAstro, d as createComponent, l as ImageMissingAlt, r as renderTemplate, m as maybeRenderHead, f as addAttribute, s as spreadAttributes, g as renderComponent } from '../astro_OJd1UA1c.mjs';
 import 'kleur/colors';
-import { i as isRemoteImage, a as isESMImportedImage, b as isLocalService, D as DEFAULT_HASH_PROPS } from '../astro/assets-service_EexBOLT5.mjs';
+import { i as isRemoteImage, a as isESMImportedImage, b as isLocalService, D as DEFAULT_HASH_PROPS } from '../astro/assets-service_ry99E9Nb.mjs';
 import 'clsx';
-import { $ as $$Icon, a as $$Layout } from './__pGKYRvh1.mjs';
+import { $ as $$Icon, a as $$Layout } from './__u0jBDZ76.mjs';
 
 const decoder = new TextDecoder();
 const toUTF8String = (input, start = 0, end = input.length) => decoder.decode(input.slice(start, end));
@@ -821,8 +821,8 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      '../build-service_ybWcQEeq.mjs'
-    ).catch((e) => {
+      '../astro/assets-service_ry99E9Nb.mjs'
+    ).then(n => n.g).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
       throw error;
@@ -970,7 +970,7 @@ const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
   })} <img${addAttribute(fallbackImage.src, "src")}${spreadAttributes(imgAdditionalAttributes)}${spreadAttributes(fallbackImage.attributes)}> </picture>`;
 }, "/Users/khaldounalnuaimi/Desktop/Omnia_new/omnia_landing-page/node_modules/astro/components/Picture.astro", void 0);
 
-const imageConfig = {"service":{"entrypoint":"@astrojs/vercel/build-image-service","config":{"sizes":[640,750,828,1080,1200,1920,2048,3840],"domains":[],"remotePatterns":[]}},"domains":[],"remotePatterns":[]};
+const imageConfig = {"service":{"entrypoint":"astro/assets/services/sharp","config":{}},"domains":[],"remotePatterns":[]};
 					new URL("file:///Users/khaldounalnuaimi/Desktop/Omnia_new/omnia_landing-page/.vercel/output/static/");
 					const getImage = async (options) => await getImage$1(options, imageConfig);
 

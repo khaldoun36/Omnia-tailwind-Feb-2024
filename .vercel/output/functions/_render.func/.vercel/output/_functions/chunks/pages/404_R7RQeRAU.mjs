@@ -1,6 +1,6 @@
 /* empty css                          */
 import { storyblokInit, apiPlugin } from '@storyblok/js';
-import { c as createAstro, a as createComponent, r as renderTemplate, b as renderHead } from '../astro_lvwGnhBe.mjs';
+import { c as createAstro, d as createComponent, r as renderTemplate, e as renderHead } from '../astro_OJd1UA1c.mjs';
 import 'kleur/colors';
 import 'clsx';
 
