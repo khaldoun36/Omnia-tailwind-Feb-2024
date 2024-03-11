@@ -1,7 +1,7 @@
 import './404_Z7YZgW6P.mjs';
 import { c as createAstro, a as createComponent, r as renderTemplate, e as renderComponent } from '../astro_lvwGnhBe.mjs';
 import 'kleur/colors';
-import { v as ve, c as $$StoryblokComponent, a as $$Layout } from './__y7k8UoNi.mjs';
+import { v as ve, c as $$StoryblokComponent, a as $$Layout } from './__pGKYRvh1.mjs';
 
 const $$Astro = createAstro();
 const $$Insights = createComponent(async ($$result, $$props, $$slots) => {

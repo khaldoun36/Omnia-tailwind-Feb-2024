@@ -3,7 +3,7 @@ import { A as AstroError, I as InvalidImageService, E as ExpectedImageOptions, g
 import 'kleur/colors';
 import { i as isRemoteImage, a as isESMImportedImage, b as isLocalService, D as DEFAULT_HASH_PROPS } from '../astro/assets-service_EexBOLT5.mjs';
 import 'clsx';
-import { $ as $$Icon, a as $$Layout } from './__y7k8UoNi.mjs';
+import { $ as $$Icon, a as $$Layout } from './__pGKYRvh1.mjs';
 
 const decoder = new TextDecoder();
 const toUTF8String = (input, start = 0, end = input.length) => decoder.decode(input.slice(start, end));

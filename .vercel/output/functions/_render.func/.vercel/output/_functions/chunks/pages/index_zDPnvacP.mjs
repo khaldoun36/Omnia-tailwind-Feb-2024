@@ -1,10 +1,10 @@
 import './404_Z7YZgW6P.mjs';
 import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, d as addAttribute, f as renderSlot, e as renderComponent } from '../astro_lvwGnhBe.mjs';
 import 'kleur/colors';
-import { b as $$ButtonLink, $ as $$Icon, a as $$Layout } from './__y7k8UoNi.mjs';
+import { b as $$ButtonLink, $ as $$Icon, a as $$Layout } from './__pGKYRvh1.mjs';
 import 'clsx';
 /* empty css                          */
-import { $ as $$Image } from './about_2YNBG2th.mjs';
+import { $ as $$Image } from './about_e7V3g_DE.mjs';
 
 const $$Astro$6 = createAstro();
 const $$Marquee = createComponent(async ($$result, $$props, $$slots) => {

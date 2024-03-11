@@ -1,6 +1,6 @@
 import { c as isRemotePath, d as isRemoteAllowed } from '../astro/assets-service_EexBOLT5.mjs';
 import mime from 'mime/lite.js';
-import { g as getConfiguredImageService, i as imageConfig } from './about_2YNBG2th.mjs';
+import { g as getConfiguredImageService, i as imageConfig } from './about_e7V3g_DE.mjs';
 
 const fnv1a52 = (str) => {
   const len = str.length;
