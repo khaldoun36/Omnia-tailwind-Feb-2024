@@ -1,21 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { useStoryblokApi } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
-import BlogPost from "../components/BlogPost.astro";
+const storyblokApi = useStoryblokApi();
+const { data } = await storyblokApi.get("cdn/stories/home", {
+    version: import.meta.env.DEV ? "draft" : "published",
+});
+const content = data.story.content;
 ---
 
 <Layout title="insights">
-    <main>
-        <h1
-            class="max-w-[30ch] text-4xl font-bold text-neutral-800 md:text-5xl"
-        >
-            Exploring the dynamics of weight loss, optimal training intensity,
-            and cutting-edge dieting tools
-        </h1>
-    </main>
-    <section
-        class="mt-16 flex flex-col items-start justify-start gap-8 md:border-l md:border-neutral-200 md:pl-6"
-    >
-        <BlogPost />
-    </section>
+    <StoryblokComponent blok={content} />
 </Layout>

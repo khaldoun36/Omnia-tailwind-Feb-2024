@@ -1,15 +1,15 @@
 const navigationLinks = [
     {
         text: "About me",
-        slug: "./about",
+        slug: "/about",
     },
     {
         text: "Insights",
-        slug: "./insights",
+        slug: "/insights",
     },
     {
         text: "Free resources",
-        slug: "./free-resources",
+        slug: "/free-resources",
     },
 ];
 

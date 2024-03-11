@@ -2,6 +2,8 @@
 import { storyblokEditable } from "@storyblok/astro";
 import { useStoryblokApi } from "@storyblok/astro";
 
+import BlogPost from "../components/BlogPost.astro";
+
 const storyblokApi = useStoryblokApi();
 
 const { data } = await storyblokApi.get("cdn/stories", {
@@ -13,7 +15,7 @@ const posts = data.stories.map((story) => {
     return {
         title: story.content.title,
         date: new Date(story.published_at).toLocaleDateString("en-US", {
-            dateStyle: "full",
+            dateStyle: "medium",
         }),
         description: story.content.description,
         slug: story.full_slug,
@@ -27,9 +29,12 @@ const { blok } = Astro.props;
     {
         posts.map((post) => (
             <li>
-                <time>{post.date}</time>
-                <a href={post.slug}>{post.title}</a>
-                <p>{post.description}</p>
+                <BlogPost
+                    to={post.slug}
+                    title={post.title}
+                    desc={post.description}
+                    date={post.date}
+                />
             </li>
         ))
     }

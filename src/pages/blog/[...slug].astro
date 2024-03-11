@@ -1,6 +1,7 @@
 ---
 import { useStoryblokApi } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import Layout from "../../layouts/Layout.astro";
 const storyblokApi = useStoryblokApi();
 const slug = Astro.params.slug;
 let content;
@@ -14,11 +15,6 @@ try {
 }
 ---
 
-<html lang="en">
-    <head>
-        <title>Storyblok & Astro</title>
-    </head>
-    <body>
-        <StoryblokComponent blok={content} />
-    </body>
-</html>
+<Layout title="insights">
+    <StoryblokComponent blok={content} />
+</Layout>

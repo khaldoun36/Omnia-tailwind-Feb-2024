@@ -1,11 +1,21 @@
 ---
+import Layout from "../layouts/Layout.astro";
 import { storyblokEditable, renderRichText } from "@storyblok/astro";
 const { blok } = Astro.props;
 const content = renderRichText(blok.content);
 ---
 
-<article {...storyblokEditable(blok)}>
-    <h1>{blok.title}</h1>
-    <p>{blok.description}</p>
+<article {...storyblokEditable(blok)} class="prose">
+    <time class="text-base text-neutral-400">
+        {
+            new Date(blok.date).toLocaleDateString("en-US", {
+                dateStyle: "medium",
+            })
+        }
+    </time>
+    <h1 class="max-w-[30ch] text-4xl font-bold text-neutral-800 md:text-5xl">
+        {blok.title}
+    </h1>
+
     <Fragment set:html={content} />
 </article>
