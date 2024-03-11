@@ -14,7 +14,8 @@ export default defineConfig({
         tailwind(),
         icon(),
         storyblok({
-            accessToken: "TeKuT4VuYc6ykJD8KjUGAQtt",
+            accessToken: env.STORYBLOK_TOKEN,
+            bridge: env.STORYBLOK_IS_PREVIEW === "yes",
             components: {
                 blogPost: "stroyblok/BlogPost",
                 blogPostList: "stroyblok/BlogPostList",
@@ -22,7 +23,7 @@ export default defineConfig({
             },
         }),
     ],
-    output: "server",
+    output: env.STORYBLOK_IS_PREVIEW === "yes" ? "server" : "static",
     adapter: vercel({
         imageService: true,
     }),
