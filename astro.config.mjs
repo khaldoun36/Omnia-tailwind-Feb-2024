@@ -7,7 +7,11 @@ import vercel from "@astrojs/vercel/serverless";
 const env = loadEnv("", process.cwd(), "STORYBLOK");
 
 const STORYBLOK_TOKEN = "TeKuT4VuYc6ykJD8KjUGAQtt";
-// https://astro.build/config
+/*
+
+    https://astro.build/config
+    
+*/
 export default defineConfig({
     integrations: [
         tailwind(),
