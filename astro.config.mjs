@@ -6,11 +6,9 @@ import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 const env = loadEnv("", process.cwd(), "STORYBLOK");
 
-const STORYBLOK_TOKEN = "TeKuT4VuYc6ykJD8KjUGAQtt";
 /*
-
     https://astro.build/config
-    
+
 */
 export default defineConfig({
     integrations: [
@@ -27,8 +25,7 @@ export default defineConfig({
         }),
     ],
     output: "server",
-    // adapter: vercel({
-    //     imageService: true,
-    // }),
-    adapter: vercel(),
+    adapter: vercel({
+        imageService: true,
+    }),
 });
