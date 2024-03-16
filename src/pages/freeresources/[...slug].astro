@@ -6,15 +6,18 @@ const storyblokApi = useStoryblokApi();
 const slug = Astro.params.slug;
 let content;
 try {
-    const { data } = await storyblokApi.get(`cdn/stories/blog/${slug}`, {
-        version: import.meta.env.DEV ? "draft" : "published",
-    });
+    const { data } = await storyblokApi.get(
+        `cdn/stories/freeresources/${slug}`,
+        {
+            version: import.meta.env.DEV ? "draft" : "published",
+        }
+    );
     content = data.story.content;
 } catch (error) {
     return Astro.redirect("/404");
 }
 ---
 
-<Layout title="insights">
+<Layout title="Free Resources">
     <StoryblokComponent blok={content} />
 </Layout>

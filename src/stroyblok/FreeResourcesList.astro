@@ -2,22 +2,19 @@
 import { storyblokEditable } from "@storyblok/astro";
 import { useStoryblokApi } from "@storyblok/astro";
 
-import BlogPost from "../components/BlogPost.astro";
-
 const storyblokApi = useStoryblokApi();
 
 const { data } = await storyblokApi.get("cdn/stories", {
     version: import.meta.env.DEV ? "draft" : "published",
-    content_type: "blogPost",
+    content_type: "freeResource",
 });
 
 const posts = data.stories.map((story) => {
     return {
         title: story.content.title,
-        date: new Date(story.published_at).toLocaleDateString("en-US", {
-            dateStyle: "medium",
-        }),
-        description: story.content.description,
+        thumbnail: story.content.thumbnail,
+        formID: story.content.formID,
+        content: story.content.content,
         slug: story.full_slug,
     };
 });
@@ -29,13 +26,7 @@ const { blok } = Astro.props;
     {
         posts.map((post) => (
             <li>
-                {post.slug}
-                <BlogPost
-                    to={post.slug}
-                    title={post.title}
-                    desc={post.description}
-                    date={post.date}
-                />
+                <a href={post.slug}> hello world</a>
             </li>
         ))
     }

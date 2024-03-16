@@ -1,5 +1,82 @@
 ---
-
+const { formID = "6350836" } = Astro.props;
 ---
 
-<h1>hello world</h1>
+<div
+    class="mx-auto max-w-[75ch] space-y-6 rounded-xl bg-neutral-100 p-6 text-center"
+>
+    <h4 class="text-balance text-xl font-bold text-neutral-800">
+        Empower Your Fitness Journey with Our Goal-Oriented Newsletter for
+        Lasting Motivation and Progress
+    </h4>
+    <p class="text-base text-neutral-600">
+        My goal with this blog is to create helpful content for people trying to
+        lose weight, and my newsletter is no different! I'll let you know when I
+        publish new content, and I'll even share exclusive newsletter-only
+        content now and then.
+    </p>
+    <p class="text-base font-medium text-neutral-800">
+        No spam, unsubscribe at any time.
+    </p>
+    <!-- start -->
+    <form
+        action="https://omniacoaching.us17.list-manage.com/subscribe/post?u=ce0108a62e2ac1d762a0459f3&id=2f68071103&f_id=00bb56e0f0"
+        method="post"
+        id="mc-embedded-subscribe-form"
+        name="mc-embedded-subscribe-form"
+        class="validate grid gap-6 md:grid-cols-2 md:justify-center"
+        target="_self"
+        novalidate=""
+    >
+        <label for="mce-EMAIL" class="sr-only"
+            >Email Address <span class="asterisk">*</span></label
+        ><input
+            type="email"
+            name="EMAIL"
+            class="required email col-span-full rounded-xl border border-neutral-400 px-4 py-2"
+            id="mce-EMAIL"
+            placeholder="Email"
+            required=""
+            value=""
+        />
+
+        <label for="mce-FNAME" class="sr-only">First Name </label><input
+            type="text"
+            name="FNAME"
+            class="text rounded-xl border border-neutral-400 px-4 py-2"
+            id="mce-FNAME"
+            placeholder="First name"
+            value=""
+        />
+
+        <label for="mce-LNAME" class="sr-only">Last Name </label><input
+            type="text"
+            name="LNAME"
+            class="text rounded-xl border border-neutral-400 px-4 py-2"
+            id="mce-LNAME"
+            placeholder="Last name"
+            value=""
+        />
+
+        <div hidden="">
+            <input type="hidden" name="tags" value={formID} />
+        </div>
+        <div aria-hidden="true" style="position: absolute; left: -5000px">
+            <input
+                type="text"
+                name="b_ce0108a62e2ac1d762a0459f3_2f68071103"
+                tabindex="-1"
+                value=""
+            />
+        </div>
+
+        <input
+            type="submit"
+            name="subscribe"
+            id="mc-embedded-subscribe"
+            class="button col-span-full flex h-10 items-center justify-center rounded-full bg-primary-500 px-5 text-sm font-semibold text-neutral-50 transition-colors hover:bg-primary-600 focus:bg-primary-600 focus:outline-none"
+            value="Subscribe"
+        />
+    </form>
+</div>
+<!-- end -->
