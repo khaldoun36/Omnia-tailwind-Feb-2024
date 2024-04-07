@@ -1,19 +1,19 @@
 ---
-const { formID = "6350836" } = Astro.props;
+const {
+    formID = "6350836",
+    formTitle = "Sign up for my newsletter",
+    formSubtitle = "My goal with this blog is to create helpful content for people trying to lose weight, and my newsletter is no different! I'll let you know when I publish new content, and I'll even share exclusive newsletter-only content now and then.",
+} = Astro.props;
 ---
 
 <div
     class="mx-auto max-w-[75ch] space-y-6 rounded-xl bg-neutral-100 p-6 text-center"
 >
     <h4 class="text-balance text-xl font-bold text-neutral-800">
-        Empower Your Fitness Journey with Our Goal-Oriented Newsletter for
-        Lasting Motivation and Progress
+        {formTitle}
     </h4>
     <p class="text-base text-neutral-600">
-        My goal with this blog is to create helpful content for people trying to
-        lose weight, and my newsletter is no different! I'll let you know when I
-        publish new content, and I'll even share exclusive newsletter-only
-        content now and then.
+        {formSubtitle}
     </p>
     <p class="text-base font-medium text-neutral-800">
         No spam, unsubscribe at any time.

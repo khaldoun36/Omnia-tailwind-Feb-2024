@@ -1,23 +1,21 @@
 ---
 import { storyblokEditable, renderRichText } from "@storyblok/astro";
 const { blok } = Astro.props;
+console.log(blok);
 const content = renderRichText(blok.content);
 
 import Form from "../components/Form.astro";
 ---
 
 <article {...storyblokEditable(blok)} class="prose mx-auto max-w-[75ch]">
-    <!-- <time class="text-base text-neutral-400">
-        {
-            new Date(blok.date).toLocaleDateString("en-US", {
-                dateStyle: "medium",
-            })
-        }
-    </time> -->
     <h1 class="max-w-[30ch] text-4xl font-bold text-neutral-800 md:text-5xl">
         {blok.title}
     </h1>
 
     <Fragment set:html={content} />
-    <Form formID={blok.formID} />
+    <Form
+        formID={blok.formID}
+        formTitle={blok.formTitle}
+        formSubtitle={blok.formSubtitle}
+    />
 </article>

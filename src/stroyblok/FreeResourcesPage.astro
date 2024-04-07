@@ -6,14 +6,10 @@ const { blok } = Astro.props;
 
 <main>
     <h1 class="max-w-[30ch] text-4xl font-bold text-neutral-800 md:text-5xl">
-        Exploring the dynamics of weight loss, optimal training intensity, and
-        cutting-edge dieting tools
+        Unlock Your Fitness Potential: Access Exclusive Free Resources!
     </h1>
 </main>
-<section
-    {...storyblokEditable(blok)}
-    class="mt-16 flex flex-col items-start justify-start gap-8 md:border-l md:border-neutral-200 md:pl-6"
->
+<section {...storyblokEditable(blok)}>
     {
         blok.body?.map((blok) => {
             return <StoryblokComponent blok={blok} />;

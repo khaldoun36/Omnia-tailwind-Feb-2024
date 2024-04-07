@@ -1,6 +1,7 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
 import { useStoryblokApi } from "@storyblok/astro";
+import FreeResource from "../components/FreeResource.astro";
 
 const storyblokApi = useStoryblokApi();
 
@@ -12,9 +13,10 @@ const { data } = await storyblokApi.get("cdn/stories", {
 const posts = data.stories.map((story) => {
     return {
         title: story.content.title,
-        thumbnail: story.content.thumbnail,
+        thumbnail: story.content.thumbnail.filename,
         formID: story.content.formID,
         content: story.content.content,
+        buttonText: story.content.buttonText,
         slug: story.full_slug,
     };
 });
@@ -22,11 +24,16 @@ const posts = data.stories.map((story) => {
 const { blok } = Astro.props;
 ---
 
-<ul {...storyblokEditable(blok)}>
+<ul {...storyblokEditable(blok)} class="mt-16 grid gap-8 md:grid-cols-2">
     {
         posts.map((post) => (
             <li>
-                <a href={post.slug}> hello world</a>
+                <FreeResource
+                    to={post.slug}
+                    thumbnail={post.thumbnail}
+                    title={post.title}
+                    btnText={post.buttonText}
+                />
             </li>
         ))
     }

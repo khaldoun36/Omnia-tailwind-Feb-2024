@@ -1,0 +1,30 @@
+---
+const {
+    thumbnail = "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title = "hello world",
+    to = "https://docs.astro.build/en/basics/astro-components/",
+    btnText = "Read more",
+} = Astro.props;
+---
+
+<a href={to}>
+    <article
+        class="relative flex aspect-video flex-col justify-between overflow-clip rounded-xl p-6"
+    >
+        <img
+            src={thumbnail}
+            alt="free resource image"
+            class="absolute inset-0 -z-10 object-cover"
+        />
+        <h2
+            class="max-w-[45ch] text-balance text-2xl font-semibold capitalize text-transparent"
+        >
+            {title}
+        </h2>
+        <button
+            class="mt-4 flex h-9 items-center gap-1 self-end rounded-lg bg-neutral-50 px-5 text-base font-medium text-neutral-600"
+        >
+            {btnText}
+        </button>
+    </article>
+</a>
