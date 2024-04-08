@@ -1,7 +1,7 @@
 ---
 import { storyblokEditable, renderRichText } from "@storyblok/astro";
 const { blok } = Astro.props;
-console.log(blok);
+
 const content = renderRichText(blok.content);
 
 import Form from "../components/Form.astro";
