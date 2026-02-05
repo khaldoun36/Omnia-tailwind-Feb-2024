@@ -16,15 +16,15 @@ export default defineConfig({
     integrations: [
         icon(),
         storyblok({
-            accessToken: env.STORYBLOK_TOKEN,
+            accessToken: "TeKuT4VuYc6ykJD8KjUGAQtt",
             bridge: env.STORYBLOK_IS_PREVIEW === "yes",
             components: {
-                blogPost: "stroyblok/BlogPost",
-                blogPostList: "stroyblok/BlogPostList",
-                page: "stroyblok/Page",
-                freeResource: "stroyblok/FreeResource",
-                freeResourcesList: "stroyblok/FreeResourcesList",
-                freeResourcesPage: "stroyblok/FreeResourcesPage",
+                blogPost: "storyblok/BlogPost",
+                blogPostList: "storyblok/BlogPostList",
+                page: "storyblok/Page",
+                freeResource: "storyblok/FreeResource",
+                freeResourcesList: "storyblok/FreeResourcesList",
+                freeResourcesPage: "storyblok/FreeResourcesPage",
             },
         }),
     ],
