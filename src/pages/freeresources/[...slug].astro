@@ -3,6 +3,25 @@ import { useStoryblokApi } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import Layout from "../../layouts/Layout.astro";
 const storyblokApi = useStoryblokApi();
+
+export async function getStaticPaths() {
+  const storyblokApi = useStoryblokApi();
+  try {
+    const { data } = await storyblokApi.get("cdn/stories", {
+      version: import.meta.env.DEV ? "draft" : "published",
+      starts_with: "freeresources/",
+    });
+    return (data.stories || []).map((story) => {
+      return {
+        params: { slug: story.slug },
+      };
+    });
+  } catch (error) {
+    console.warn("Could not fetch free resources paths (likely missing token)");
+    return [];
+  }
+}
+
 const slug = Astro.params.slug;
 let content;
 try {

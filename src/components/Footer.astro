@@ -1,5 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
+
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="breakout content-grid border-t border-neutral-200">
@@ -11,7 +13,7 @@ import { Icon } from "astro-icon/components";
         </a>
         <p class="flex items-center gap-1 text-sm text-neutral-600">
             <Icon name="ph:copyright" class="text-xl" />
-            <span>Omnia Coaching 2023. All rights reserved.</span>
+            <span>Omnia Coaching {currentYear}. All rights reserved.</span>
         </p>
     </div>
 </footer>

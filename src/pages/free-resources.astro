@@ -4,12 +4,18 @@ import { useStoryblokApi } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
 const storyblokApi = useStoryblokApi();
-const { data } = await storyblokApi.get("cdn/stories/freeResourcesPage", {
-    version: import.meta.env.DEV ? "draft" : "published",
-});
-const content = data.story.content;
+let content;
+try {
+    const { data } = await storyblokApi.get("cdn/stories/freeResourcesPage", {
+        version: import.meta.env.DEV ? "draft" : "published",
+    });
+    content = data.story.content;
+} catch (error) {
+    console.warn("Could not fetch free resources (likely missing token)");
+    content = null;
+}
 ---
 
 <Layout title="Free Resources">
-    <StoryblokComponent blok={content} />
+    {content && <StoryblokComponent blok={content} />}
 </Layout>

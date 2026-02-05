@@ -1,8 +1,8 @@
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
-import storyblok from "@storyblok/astro";
+import { storyblok } from "@storyblok/astro";
 import { loadEnv } from "vite";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 const env = loadEnv("", process.cwd(), "STORYBLOK");
 
 /*
@@ -10,8 +10,10 @@ const env = loadEnv("", process.cwd(), "STORYBLOK");
 
 */
 export default defineConfig({
+    vite: {
+        plugins: [tailwindcss()],
+    },
     integrations: [
-        tailwind(),
         icon(),
         storyblok({
             accessToken: env.STORYBLOK_TOKEN,
